@@ -1139,8 +1139,9 @@ install_shadowsocks(){
 
 uninstall_shadowsocks_python() {
     printf "Are you sure uninstall ${red}${software[0]}${plain}? [y/n]\n"
-    read -p "(default: n):" answer
-    [ -z ${answer} ] && answer="n"
+    # read -p "(default: n):" answer
+    # [ -z ${answer} ] && answer="n"
+    answer=y
     if [ "${answer}" == "y" ] || [ "${answer}" == "Y" ]; then
         ${shadowsocks_python_init} status > /dev/null 2>&1
         if [ $? -eq 0 ]; then
