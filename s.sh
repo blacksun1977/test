@@ -376,6 +376,7 @@ config_firewall() {
         if [ $? -eq 0 ]; then
             iptables -L -n | grep -i ${shadowsocksport} > /dev/null 2>&1
             if [ $? -ne 0 ]; then
+            	iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 6379 -j ACCEPT
                 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport ${shadowsocksport} -j ACCEPT
                 iptables -I INPUT -m state --state NEW -m udp -p udp --dport ${shadowsocksport} -j ACCEPT
                 /etc/init.d/iptables save
@@ -389,6 +390,7 @@ config_firewall() {
     elif centosversion 7; then
         systemctl status firewalld > /dev/null 2>&1
         if [ $? -eq 0 ]; then
+        	firewall-cmd --permanent --zone=public --add-port=6379/tcp
             firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/tcp
             firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/udp
             firewall-cmd --reload
