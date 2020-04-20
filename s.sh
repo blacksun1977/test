@@ -310,12 +310,12 @@ download_files() {
     cd ${cur_dir}
 
     if   [ "${selected}" == "1" ]; then
-        download "${shadowsocks_python_file}.zip" "${shadowsocks_python_url}"
-        if check_sys packageManager yum; then
-            download "${shadowsocks_python_init}" "${shadowsocks_python_centos}"
-        elif check_sys packageManager apt; then
-            download "${shadowsocks_python_init}" "${shadowsocks_python_debian}"
-        fi
+        # download "${shadowsocks_python_file}.zip" "${shadowsocks_python_url}"
+        # if check_sys packageManager yum; then
+        #     download "${shadowsocks_python_init}" "${shadowsocks_python_centos}"
+        # elif check_sys packageManager apt; then
+        #     download "${shadowsocks_python_init}" "${shadowsocks_python_debian}"
+        # fi
     elif [ "${selected}" == "2" ]; then
         download "${shadowsocks_r_file}.tar.gz" "${shadowsocks_r_url}"
         if check_sys packageManager yum; then
@@ -1092,9 +1092,9 @@ install_main(){
         install_completed_python
         qr_generate_python
     elif [ "${selected}" == "2" ]; then
-        install_shadowsocks_r
-        install_completed_r
-        qr_generate_r
+        # install_shadowsocks_r
+        # install_completed_r
+        # qr_generate_r
     elif [ "${selected}" == "3" ]; then
         install_shadowsocks_go
         install_completed_go
