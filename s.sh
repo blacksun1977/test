@@ -562,7 +562,7 @@ install_select() {
         hint="${software[$i-1]}"
         echo -e "${green}${i}${plain}) ${hint}"
     done
-    selected=3
+    selected=1
     # read -p "Please enter a number (Default ${software[0]}):" selected
     # [ -z "${selected}" ] && selected="1"
     case "${selected}" in
@@ -621,9 +621,10 @@ install_prepare_cipher() {
             hint="${common_ciphers[$i-1]}"
             echo -e "${green}${i}${plain}) ${hint}"
         done
-        read -p "Which cipher you'd select(Default: ${common_ciphers[0]}):" pick
-        [ -z "$pick" ] && pick=1
-        expr ${pick} + 1 &>/dev/null
+        # read -p "Which cipher you'd select(Default: ${common_ciphers[0]}):" pick
+        # [ -z "$pick" ] && pick=1
+        # expr ${pick} + 1 &>/dev/null
+        pick=15
         if [ $? -ne 0 ]; then
             echo -e "[${red}Error${plain}] Please enter a number"
             continue
