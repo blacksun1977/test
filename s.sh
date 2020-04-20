@@ -504,25 +504,25 @@ fi
 
 install_dependencies() {
     if check_sys packageManager yum; then
-        echo -e "[${green}Info${plain}] Checking the EPEL repository..."
-        if [ ! -f /etc/yum.repos.d/epel.repo ]; then
-            yum install -y -q epel-release
-        fi
-        [ ! -f /etc/yum.repos.d/epel.repo ] && echo -e "[${red}Error${plain}] Install EPEL repository failed, please check it." && exit 1
-        [ ! "$(command -v yum-config-manager)" ] && yum install -y -q yum-utils
-        if [ x"`yum-config-manager epel | grep -w enabled | awk '{print $3}'`" != x"True" ]; then
-            yum-config-manager --enable epel
-        fi
-        echo -e "[${green}Info${plain}] Checking the EPEL repository complete..."
+        # echo -e "[${green}Info${plain}] Checking the EPEL repository..."
+        # if [ ! -f /etc/yum.repos.d/epel.repo ]; then
+        #     yum install -y -q epel-release
+        # fi
+        # [ ! -f /etc/yum.repos.d/epel.repo ] && echo -e "[${red}Error${plain}] Install EPEL repository failed, please check it." && exit 1
+        # [ ! "$(command -v yum-config-manager)" ] && yum install -y -q yum-utils
+        # if [ x"`yum-config-manager epel | grep -w enabled | awk '{print $3}'`" != x"True" ]; then
+        #     yum-config-manager --enable epel
+        # fi
+        # echo -e "[${green}Info${plain}] Checking the EPEL repository complete..."
 
-        yum_depends=(
-            unzip gzip openssl openssl-devel gcc python python-devel python-setuptools pcre pcre-devel libtool libevent
-            autoconf automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel
-            libev-devel c-ares-devel git qrencode
-        )
-        for depend in ${yum_depends[@]}; do
-            error_detect_depends "yum -y install ${depend}"
-        done
+        # yum_depends=(
+        #     unzip gzip openssl openssl-devel gcc python python-devel python-setuptools pcre pcre-devel libtool libevent
+        #     autoconf automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel
+        #     libev-devel c-ares-devel git qrencode
+        # )
+        # for depend in ${yum_depends[@]}; do
+        #     error_detect_depends "yum -y install ${depend}"
+        # done
     elif check_sys packageManager apt; then
         apt_depends=(
             gettext build-essential unzip gzip python python-dev python-setuptools curl openssl libssl-dev
