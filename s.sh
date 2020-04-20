@@ -1274,7 +1274,8 @@ uninstall_shadowsocks() {
         hint="${software[$i-1]}"
         echo -e "${green}${i}${plain}) ${hint}"
     done
-    read -p "Please enter a number [1-4]:" un_select
+    # read -p "Please enter a number [1-4]:" un_select
+    un_select=1
     case "${un_select}" in
         1|2|3|4)
         echo
