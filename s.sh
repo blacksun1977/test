@@ -523,6 +523,7 @@ install_dependencies() {
         # for depend in ${yum_depends[@]}; do
         #     error_detect_depends "yum -y install ${depend}"
         # done
+        echo ""
     elif check_sys packageManager apt; then
         apt_depends=(
             gettext build-essential unzip gzip python python-dev python-setuptools curl openssl libssl-dev
